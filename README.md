@@ -4,20 +4,20 @@
 - CPU 가 인식, 해석, 실행할 수 있는 명령어들의 모음을 명령어 집합(instruction set) 또는 명령어 집합 구조
 - 소프트웨어와 하드웨어 사이의 인터페이스
 
-   #### CISC(Complex Instruction Set Computer)
+   ##### CISC(Complex Instruction Set Computer)
     - Micro Processor에게 명령을 내리는데 필요한 모든 명령어 셋을 갖추고 있는 Processor
 
     [장점] 복합적, 높은 하위 호환성, 범용 컴퓨터에 유리
     [단점] 트랜지스터 집적에 있어 낮은 효율성, 큰 전력 소모, 느린 속도, 비싼 가격 등
 
-   #### RISC(Reduced Instruction Set Computer)
+   ##### RISC(Reduced Instruction Set Computer)
     - CISC에서 전체 80%이상의 일을 처리하는 20%에 해당하는 명령어들만 모아둔 Processor
 
 
 #### RISC-V
 무료 오픈 소스 RISC 명령어셋 아키텍처
 
-RV32I
+##### RV32I
 - RISC-V에서 32비트 기본 정수형(Integer) 명령어 세트를 사용하는 CPU
 
 (싱글 싸이클 프로세서 블록도)
