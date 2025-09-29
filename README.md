@@ -1,4 +1,4 @@
-# Micro Controller Unit과 AMBA APB
+# Micro Controller Unit
 ## CPU
 ### ISA (Instruction Set Architecture)
 - CPU 가 인식, 해석, 실행할 수 있는 명령어들의 모음을 명령어 집합(instruction set) 또는 명령어 집합 구조
@@ -23,18 +23,22 @@
 명령어 소개
 (표)
 
+
+
 ※ single cycle processor block diagram
 <br><img width="2732" height="2004" alt="Image" src="https://github.com/user-attachments/assets/7d4223de-a22b-4b36-8c39-6ac856836765" /><br>
-- 모든 명령어를 처리하는 데 한 시스템 Clock 사이클 안에 처리됨   
+- 모든 명령어를 처리하는 데 한 시스템 Clock 사이클 안에 처리됨  
+[장점] : 단순한 구조   
 [단점] : 명령어 중 처리시간이 가장 긴 명령어를 기준으로 최소 Clock 시간이 결정됨  
 <처리시간이 긴 이유 = 데이터 흐름이 길기 때문(?)><br>
 ![Image](https://github.com/user-attachments/assets/62ebdad4-c5aa-490f-a894-0a574ea4e31b)<br>
-일부 명령어에서는 처리 시간이 일찍 끝나서 시간이 낭비되고 있는 모습
+일부 명령어에서는 처리 시간이 일찍 끝나서 시간이 낭비되고 있는 모습   
 
 ※ Multi cycle processor block diagram
 <br><img width="2700" height="2004" alt="Image" src="https://github.com/user-attachments/assets/621f9e1b-ad60-40ba-8b92-38d76b36e317" /><br>
 - 명령어 처리를 여러 사이클동안 진행
-- 명령어 하나의 처리 시간은 single cycle 대비 느리지만, 전체적인 프로세서의 처리 시간은 빠름
+- 명령어 하나의 처리 시간은 single cycle 대비 느리지만, 전체적인 프로세서의 처리 시간은 빠름  
+[단점] : 복잡해지는 구조
 
 동작 FSM<br>
 <img width="1385" height="913" alt="Image" src="https://github.com/user-attachments/assets/90bddd1c-b8bc-4030-9cb0-ebdaffb311d1" />
@@ -48,7 +52,10 @@ CPU, 메모리(RAM, ROM), 주변장치로 구성
 - 임베디드 시스템에서 핵심적인 역할을 수행
 - 저전력, Peripheral과의 상호 작용이 필요한 시스템에 적합
 
-(mcu 블럭도)
+※ MCU block diagram
+<br><img width="3162" height="2264" alt="Image" src="https://github.com/user-attachments/assets/1a9a74c4-2c9e-4efd-ac6f-33ffabad21fa" /><br>
+- 실행할 명령어 모음을 미리 ROM에 저장하게 되면 장치를 실행하게 되면 명령어 순서대로 명령을 처리하게 된다.
 
 
-## AMBA APB
+c언어 -> 어셈블리어 -> 기계어
+
