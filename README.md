@@ -20,10 +20,8 @@
 ##### RV32I
 - RISC-V에서 32비트 기본 정수형(Integer) 명령어 세트를 사용하는 CPU
 
-명령어 소개
-(표)
-
-
+명령어
+<br><img width="1980" height="203" alt="Image" src="https://github.com/user-attachments/assets/8d666946-5b21-4fb7-903c-77100150dcae" />
 
 ※ single cycle processor block diagram
 <br><img width="2732" height="2004" alt="Image" src="https://github.com/user-attachments/assets/7d4223de-a22b-4b36-8c39-6ac856836765" /><br>
@@ -44,6 +42,27 @@
 <img width="1385" height="913" alt="Image" src="https://github.com/user-attachments/assets/90bddd1c-b8bc-4030-9cb0-ebdaffb311d1" />
 
 각 명령어 소개 및 시뮬레이션
+- R-Type
+<br><img width="2039" height="925" alt="Image" src="https://github.com/user-attachments/assets/4b144367-5202-48f3-b6db-cfba4bf92d82" /><br>
+    - 검증<br><img width="2043" height="929" alt="Image" src="https://github.com/user-attachments/assets/3adbc786-b499-4547-8b5f-8e8e8f1a036f" /><br>
+
+- I-Type<br><img width="2043" height="926" alt="Image" src="https://github.com/user-attachments/assets/757e070b-4235-4dc2-9995-ab9ec1448c70" /><br>
+    - 검증<br><img width="2043" height="928" alt="Image" src="https://github.com/user-attachments/assets/e5738170-e55a-4f8f-8dc6-0544fb5147a5" /><br>
+
+- S-Type<br><img width="2043" height="929" alt="Image" src="https://github.com/user-attachments/assets/ba08900c-cb3d-4ca6-ab76-0363b7f9f19c" /><br>
+    - 검증<br><img width="2045" height="927" alt="Image" src="https://github.com/user-attachments/assets/97544c22-9cb2-432d-9459-f4a1bf95c4d8" /><br>
+
+- L-Type<br><img width="2044" height="925" alt="Image" src="https://github.com/user-attachments/assets/5d68d802-d995-4153-beec-ba6ed8cbb292" /><br>
+    - 검증<br><img width="2043" height="927" alt="Image" src="https://github.com/user-attachments/assets/a5d96097-dfad-449f-acfc-933550be546e" /><br>
+
+- B-Type<br><img width="2044" height="928" alt="Image" src="https://github.com/user-attachments/assets/5e8b929d-a5b4-4d43-9d83-18a5a8c98b01" /><br>
+    - 검증<br><img width="2042" height="928" alt="Image" src="https://github.com/user-attachments/assets/2aeaa3b9-f564-465c-b2c7-308eef261d66" /><br>
+
+- LU, AU-Type<br><img width="2044" height="930" alt="Image" src="https://github.com/user-attachments/assets/b7fbc62f-4d72-4d7f-ab83-bd5966af2e37" /><br>
+    - 검증<br><img width="2045" height="928" alt="Image" src="https://github.com/user-attachments/assets/83a507c2-178c-4ff1-88d0-0c1ca315fa7c" /><br>
+
+- J,JA-Type<br><img width="2044" height="929" alt="Image" src="https://github.com/user-attachments/assets/2b4151ff-8b54-4aa0-b5f5-69c96b59c7d8" /><br>
+    - 검증<br><img width="2046" height="927" alt="Image" src="https://github.com/user-attachments/assets/c9002b03-7a16-4720-8556-5010e78a5c0d" /><br>
 
 ## MCU 
 작은 규모의 컴퓨터 시스템을 하나의 칩 안에 통합한 장치
