@@ -21,8 +21,8 @@
 - RISC-V에서 32비트 기본 정수형(Integer) 명령어 세트를 사용하는 CPU
 
 명령어
-<br><img width="4258" height="890" alt="Image" src="https://github.com/user-attachments/assets/81e9e275-2b29-4e10-b4b1-088a4de485d5" /><br>
-<img width="5109" height="1068" alt="Image" src="https://github.com/user-attachments/assets/3b842944-4fd8-4427-8fa5-7a7477ba75a9" /><br>
+<br><img width="5109" height="1068" alt="Image" src="https://github.com/user-attachments/assets/3b842944-4fd8-4427-8fa5-7a7477ba75a9" /><br>
+
 
 ※ single cycle processor block diagram
 <br><img width="2732" height="2004" alt="Image" src="https://github.com/user-attachments/assets/7d4223de-a22b-4b36-8c39-6ac856836765" /><br>
