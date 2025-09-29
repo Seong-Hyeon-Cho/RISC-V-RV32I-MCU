@@ -80,7 +80,6 @@ CPU, 메모리(RAM, ROM), 주변장치로 구성
 1. 실행시키고자 하는 프로그램을 프로그래밍 언어(예: C언어)로 작성한다.  https://godbolt.org/ 
 
 ```C
-
 void sort(int *pData, int size);
 void swap(int *pA, int *pB);
 
@@ -113,8 +112,7 @@ void swap(int *pA, int *pB)
 ```
 
 2. 작성한 코드를 어셈블리어로 변환한다.   https://riscvasm.lucasteske.dev/
-<pre><code>
-        addi    sp,sp,0x64
+<pre><code>        addi    sp,sp,0x64
 main:
         addi    sp,sp,-32
         sw      ra,28(sp)
@@ -152,8 +150,7 @@ adder:
 </code></pre>
 
 3. 어셈블리어를 기계어로 번역한다.
-<pre><code>
-04000113
+<pre><code>04000113
 fe010113
 00112e23
 00812c23
