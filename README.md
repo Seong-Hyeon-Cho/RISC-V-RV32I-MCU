@@ -57,5 +57,120 @@ CPU, 메모리(RAM, ROM), 주변장치로 구성
 - 실행할 명령어 모음을 미리 ROM에 저장하게 되면 장치를 실행하게 되면 명령어 순서대로 명령을 처리하게 된다.
 
 
-c언어 -> 어셈블리어 -> 기계어
+실행 방법
+1. 실행시키고자 하는 프로그램을 프로그래밍 언어(예: C언어)로 작성한다.  https://godbolt.org/ 
+
+```C
+
+void sort(int *pData, int size);
+void swap(int *pA, int *pB);
+
+int main(){
+    int arData[6] = {5,4,3,2,1};
+    
+    sort(arData,5);
+
+    return 0;
+}
+
+void sort(int *pData, int size)
+{
+    for(int i=0; i<size;i++){
+        for(int j=0;j<size-i-1;j++){
+            if (pData[j] > pData[j+1])
+            swap(&pData[j],&pData[j+1]);
+        }
+    }
+}
+
+void swap(int *pA, int *pB)
+{
+    int temp;
+    temp = *pA;
+    *pA = *pB;
+    *pB = temp;
+}
+
+```
+
+2. 작성한 코드를 어셈블리어로 변환한다.   https://riscvasm.lucasteske.dev/
+<pre><code>
+        addi    sp,sp,0x64
+main:
+        addi    sp,sp,-32
+        sw      ra,28(sp)
+        sw      s0,24(sp)
+        addi    s0,sp,32
+        li      a5,10
+        sw      a5,-20(s0)
+        li      a5,20
+        sw      a5,-24(s0)
+        lw      a1,-24(s0)
+        lw      a0,-20(s0)
+        call    adder
+        sw      a0,-28(s0)
+        li      a5,0
+        mv      a0,a5
+        lw      ra,28(sp)
+        lw      s0,24(sp)
+        addi    sp,sp,32
+        jr      ra
+adder:
+        addi    sp,sp,-32
+        sw      ra,28(sp)
+        sw      s0,24(sp)
+        addi    s0,sp,32
+        sw      a0,-20(s0)
+        sw      a1,-24(s0)
+        lw      a4,-20(s0)
+        lw      a5,-24(s0)
+        add     a5,a4,a5
+        mv      a0,a5
+        lw      ra,28(sp)
+        lw      s0,24(sp)
+        addi    sp,sp,32
+        jr      ra
+</code></pre>
+
+3. 어셈블리어를 기계어로 번역한다.
+<pre><code>
+04000113
+fe010113
+00112e23
+00812c23
+02010413
+00a00793
+fef42623
+01400793
+fef42423
+fe842583
+fec42503
+020000ef
+fea42223
+00000793
+00078513
+01c12083
+01812403
+02010113
+00008067
+fe010113
+00112e23
+00812c23
+02010413
+fea42623
+feb42423
+fec42703
+fe842783
+00f707b3
+00078513
+01c12083
+01812403
+02010113
+00008067
+</code></pre>
+4. 기계어를 ROM에 저장한다.
+
+
+MCU 실행 결과<br>
+<img width="2046" height="930" alt="Image" src="https://github.com/user-attachments/assets/918094b1-eeef-486c-af6e-419c76daff0b" /><br>
 

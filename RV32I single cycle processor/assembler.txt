@@ -1,0 +1,118 @@
+assembler
+
+	li 	  sp, 0x100					SP에 256 저장
+main:
+        addi    sp,sp,-48       			        SP에 SP - 48 저장
+        sw      ra,44(sp)                                       Mem[(SP+44)/4]에 ra의 값을 저장
+        sw      s0,40(sp)                                       Mem[(SP+40)/4]에 s0의 값을 저장
+        addi    s0,sp,48                                        s0에 SP + 48 저장
+        sw      zero,-40(s0)                                    Mem[(s0-40)/4]에 0을 저장
+        sw      zero,-36(s0)                                    Mem[(s0-36)/4]에 0을 저장
+        sw      zero,-32(s0)                                    Mem[(s0-32)/4]에 0을 저장
+        sw      zero,-28(s0)                                    Mem[(s0-28)/4]에 0을 저장
+        sw      zero,-24(s0)                                    Mem[(s0-24)/4]에 0을 저장
+        sw      zero,-20(s0)                                    Mem[(s0-20)/4]에 0을 저장
+        li      a5,5                                            a5에 5를 저장
+        sw      a5,-40(s0)                                      Mem[(s0-40)/4]에 a5의 값(=5)를 저장
+        li      a5,4                                            a5에 4를 저장  
+        sw      a5,-36(s0)                                      Mem[(s0-36)/4]에 a5의 값(=4)를 저장 
+        li      a5,3                                            a5에 3를 저장 
+        sw      a5,-32(s0)                                      Mem[(s0-32)/4]에 a5의 값(=3)를 저장
+        li      a5,2                                            a5에 2를 저장  
+        sw      a5,-28(s0)                                      Mem[(s0-28)/4]에 a5의 값(=2)를 저장
+        li      a5,1                                            a5에 1를 저장                 
+        sw      a5,-24(s0)                                      Mem[(s0-24)/4]에 a5의 값(=1)를 저장
+        addi    a5,s0,-40                                       a5에 s0-40 을 저장
+        li      a1,5                                            a1에 5를 저장
+        mv      a0,a5                                           a0에 a5의 값를 저장
+        call    sort                                            jal ra,28 -> ra에 PC+4를 저장, PC = PC + 28 -> 복귀주소를 ra에 저장하고 PC는 (현재 PC) + 28로 점프 
+        li      a5,0                                            a0에 5를 저장
+        mv      a0,a5                                           a0에 a5의 값을 저장
+        lw      ra,44(sp)                                       ra에 Mem[(SP+44)/4]의 값을 저장
+        lw      s0,40(sp)                                       s0에 Mem[(SP+40)/4]의 값을 저장
+        addi    sp,sp,48                                        SP에 SP + 48을 저장
+        jr      ra                                              jalr zero, ra, 0 -> zero에 PC+4를 저장, PC = ra + 0 PC = ra + 0 -> 복귀주소를 저장하지 않고 PC는 ra + 0 으로 점프
+sort:                                   
+        addi    sp,sp,-48                                       SP에 SP - 48을 저장
+        sw      ra,44(sp)                                       Mem[(SP+44)/4]에 ra의 값 저장
+        sw      s0,40(sp)                                       Mem[(SP+40)/4]에 s0의 값 저장
+        addi    s0,sp,48                                        s0에 SP + 48을 저장
+        sw      a0,-36(s0)                                      Mem[(s0-36)/4]에 a0의 값 저장
+        sw      a1,-40(s0)                                      Mem[(s0-40)/4]에 a1의 값 저장
+        sw      zero,-20(s0)                                    Mem[(s0-20)/4]에 0을 저장
+        j       .L4                                             jal zero, 28 -> zero에 PC + 4를 저장, PC = PC + 28 -> 복귀하지 않고 PC는 (현재 PC) + 28로 점프
+.L6:                                    
+.L8:                                    
+        sw      zero,-24(s0)                                    Mem[(s0 - 24)/4]에 0을 저장
+        j       .L5                                             jal zero, 112 -> zero에 PC + 4를 저장, PC = PC + 112 -> 복귀하지 않고 PC는 (현재 PC) + 112로 점프
+.L7:                                    
+        lw      a5,-24(s0)                                      a5에 Mem[(s0-24)/4]의 값을 저장
+        slli    a5,a5,2                                         a5에 a5의 값의 Left Shift 2를 한 값을 저장
+        lw      a4,-36(s0)                                      a4에 Mem[(s0-36)/4]의 값을 저장
+        add     a5,a4,a5                                        a5에 a4 + a5 의 값을 저장
+        lw      a4,0(a5)                                        a4에 Mem[(a5 + 0)/4]의 값을 저장
+        lw      a5,-24(s0)                                      a5에 Mem[(s0 - 24)/4]의 값을 저장
+        addi    a5,a5,1                                         a5에 a5 + 1 을 저장
+        slli    a5,a5,2                                         a5에 a5의 값의 Left Shift 2를 한 값을 저장
+        lw      a3,-36(s0)                                      a3에 Mem[(s0 - 36)/4]의 값을 저장
+        add     a5,a3,a5                                        a5에 a3 + a5 의 값을 저장
+        lw      a5,0(a5)                                        a5에 Mem[(a5 + 0)/4]의 값을 저장
+        ble     a4,a5,.L6                                       a5 >= a4 이면 PC = PC + 104 -> 조건이 만족하면 PC는 (현재 PC) + 104로 점프
+        lw      a5,-24(s0)                                      a5에 Mem[(s0 - 24)/4]의 값을 저장
+        slli    a5,a5,2                                         a5에 a5의 값의 Left Shift 2를 한 값을 저장
+        lw      a4,-36(s0)                                      a4에 Mem[(s0 - 36)/4]의 값을 저장
+        add     a3,a4,a5                                        a3에 a4 + a5 의 값을 저장
+        lw      a5,-24(s0)                                      a5에 Mem[(s0-24)/4]의 값을 저장
+        addi    a5,a5,1                                         a5에 a5 + 1 을 저장
+        slli    a5,a5,2                                         a5에 a5의 값의 Left Shift 2를 한 값을 저장
+        lw      a4,-36(s0)                                      a4에 Mem[(s0 - 36)/4]의 값을 저장
+        add     a5,a4,a5                                        a5에 a4 + a5 의 값을 저장
+        mv      a1,a5                                           a1에 a5의 값을 저장
+        mv      a0,a3                                           a0에 a3의 값을 저장
+        call    swap                                            jal ra, 88 -> ra에 PC + 4를 저장, PC = PC + 88 -> 복귀주소를 ra에 저장하고 PC는 (현재 PC) + 88로 점프
+.L6:                                    
+        lw      a5,-24(s0)                                      a5에 Mem[(s0 - 24)/4]의 값을 저장
+        addi    a5,a5,1                                         a5에 a5 + 1을 저장
+        sw      a5,-24(s0)                                      Mem[(s0-24)/4]에 a5의 값을 저장
+.L5:                                    
+        lw      a4,-40(s0)                                      a4에 Mem[(s0-40)/4]의 값을 저장
+        lw      a5,-20(s0)                                      a5에 Mem[(s0-20)/4]의 값을 저장
+        sub     a5,a4,a5                                        a5에 a4 - a5 값을 저장
+        addi    a5,a5,-1                                        a5에 a5 - 1을 저장
+        lw      a4,-24(s0)                                      a4에 Mem[(s0-24)/4]의 값을 저장
+        blt     a4,a5,.L7                                       a4 < a5 이면 PC = PC - 128 -> 조건이 만족하면 PC는 (현재 PC) - 128로 점프
+        lw      a5,-20(s0)                                      a5에 Mem[(s0 - 20)/4]의 값을 저장
+        addi    a5,a5,1                                         a5에 a5 + 1 을 저장
+        sw      a5,-20(s0)                                      Mem[(s0 - 20)/4]에 a5의 값을 저장
+.L4:                                    
+        lw      a4,-20(s0)                                      a4에 Mem[(s0 - 20)/4]의 값을 저장
+        lw      a5,-40(s0)                                      a5에 Mem[(s0 - 40)/4]의 값을 저장
+        blt     a4,a5,.L8                                       a4 < a5이면 PC = PC + 156 -> 조건이 만족하면 PC는 (현재 PC) + 156로 점프
+        nop                                                     아무 동작 안함
+        nop                                                     아무 동작 안함
+        lw      ra,44(sp)                                       ra에 Mem[(SP + 44)/4]의 값을 저장
+        lw      s0,40(sp)                                       s0에 Mem[(SP + 40)/4]의 값을 저장
+        addi    sp,sp,48                                        SP에 SP + 48을 저장
+        jr      ra                                              jalr x0, 0(x1) -> zero에 PC + 4를 저장, PC = ra + 0 -> 복귀주소를 저장하지 않고 PC는 ra + 0 으로 점프
+swap:                                   
+        addi    sp,sp,-48                                       SP에 SP - 48을 저장
+        sw      ra,44(sp)                                       Mem[(SP + 44)/4]에 ra의 값 저장
+        sw      s0,40(sp)                                       Mem[(SP + 40)/4]에 s0의 값 저장
+        addi    s0,sp,48                                        s0에 SP + 48 을 저장
+        sw      a0,-36(s0)                                      Mem[(s0 - 36)/4]에 a0의 값 저장
+        sw      a1,-40(s0)                                      Mem[(s0 - 40)/4]에 a1의 값 저장
+        lw      a5,-36(s0)                                      a5에 Mem[(s0 - 36)/4]의 값 저장
+        lw      a5,0(a5)                                        a5에 Mem[(a5 + 0)/4]의 값 저장
+        sw      a5,-20(s0)                                      Mem[(s0 - 20)/4]에 a5의 값 저장
+        lw      a5,-40(s0)                                      a5에 Mem[(s0 - 40)/4]의 값 저장
+        lw      a4,0(a5)                                        a4에 Mem[(a5 + 0)/4]의 값 저장
+        lw      a5,-36(s0)                                      a5에 Mem[(s0 - 36)/4]의 값 저장
+        sw      a4,0(a5)                                        Mem[(a5 + 0)/4]에 a4의 값 저장
+        lw      a5,-40(s0)                                      a5에 Mem[(s0 - 40)/4]의 값 저장
+        lw      a4,-20(s0)                                      a4에 Mem[(s0 - 20)/4]의 값 저장
+        sw      a4,0(a5)                                        Mem[(a5 + 0)/4]에 a4의 값 저장
+        nop                                                     아무 동작 안함
+        lw      ra,44(sp)                                       ra에 Mem[(SP + 44)/4]의 값 저장
+        lw      s0,40(sp)                                       s0에 Mem[(SP + 40)/4]의 값 저장
+        addi    sp,sp,48                                        SP에 SP + 48을 저장
+        jr      ra                                              jalr x0, 0(x1) -> zero에 PC + 4를 저장, PC = ra + 0 -> 복귀주소를 저장하지 않고 PC는 ra + 0 으로 점프
