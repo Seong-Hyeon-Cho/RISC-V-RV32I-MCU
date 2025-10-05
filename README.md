@@ -15,7 +15,7 @@
 
 
 #### RISC-V
-무료 오픈 소스 RISC 명령어셋 아키텍처
+무료 오픈 소스 RISC 명령어 셋 아키텍처
 
 ##### RV32I
 - RISC-V에서 32비트 기본 정수형(Integer) 명령어 세트를 사용하는 CPU
@@ -31,12 +31,12 @@
 [단점] : 명령어 중 처리시간이 가장 긴 명령어를 기준으로 최소 Clock 시간이 결정됨  
 <처리시간이 긴 이유 = 데이터 흐름 경로가 길기 때문><br>
 ![Image](https://github.com/user-attachments/assets/62ebdad4-c5aa-490f-a894-0a574ea4e31b)<br>
-일부 명령어에서는 처리 시간이 일찍 끝나서 시간이 낭비되고 있는 모습   
+일부 명령어에서는 처리시간이 일찍 끝나서 시간이 낭비되고 있는 모습   
 
 ※ Multi cycle processor block diagram
 <br><img width="2700" height="2004" alt="Image" src="https://github.com/user-attachments/assets/621f9e1b-ad60-40ba-8b92-38d76b36e317" /><br>
 - 명령어 처리를 여러 사이클동안 진행
-- 명령어 하나의 처리 시간은 single cycle 대비 느리지만, 전체적인 프로세서의 처리 시간은 빠름  
+- 명령어 하나의 처리시간은 single cycle 대비 느리지만, 전체적인 프로세서의 처리시간은 빠름  
 [단점] : 복잡해지는 구조
 
 동작 FSM<br>
