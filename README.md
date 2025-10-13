@@ -191,3 +191,51 @@ fe842783
 MCU 실행 결과<br>
 <img width="2046" height="930" alt="Image" src="https://github.com/user-attachments/assets/918094b1-eeef-486c-af6e-419c76daff0b" /><br>
 
+### BUS
+- 데이터를 전송하는 통신 시스템
+
+#### AMBA (Advanced Microcontroller Bus Architecture)
+- ARM사에서 개발한 칩 내부의 IP 코어들을 연결하고 통신하기 위한 표준 버스 아키텍처입니다.   
+- SoC 설계에서 프로세서, 메모리, 주변 장치 간의 통신을 효율적으로 관리하기 위해 사용된다.   
+
+
+##### APB (Advanced Peripheral Bus)
+- 용도: 저속·저전력 레지스터 접근(GPIO, 타이머, UART 등 주변장치 CSR)
+- 구조: 단순 동기식, 파이프라이닝/버스트/스플릿 없음.
+- 핸드셰이크: 2-phase 타이밍
+    - SETUP: PSEL=1, PENABLE=0, PADDR/PWRITE/PWDATA 유효
+    - ACCESS: PENABLE=1로 전환, 슬레이브가 PREADY로 완료 알림
+- 주요 신호: PCLK, PADDR, PSEL, PENABLE, PWRITE, PWDATA, PRDATA, PREADY, PSLVERR
+- 특징: 단일 전송, 낮은 복잡도, 구현/검증 쉬움, 대역폭 낮지만 지연 일정.
+
+[APB 타이밍다이어그램]   
+<img width="520" height="230" alt="Image" src="https://github.com/user-attachments/assets/8405201f-58ff-4d76-80f0-657631d8bc63" >   
+
+[인터페이스]   
+<img width="727" height="645" alt="Image" src="https://github.com/user-attachments/assets/95ac4d0b-5f81-4a56-8d3d-8e2a99f39083" /><br>
+<img width="397" height="380" alt="Image" src="https://github.com/user-attachments/assets/904cbc1e-dfce-499a-83ea-c39697c07f6b" /><br>
+
+[시뮬레이션]   
+<img width="1163" height="476" alt="Image" src="https://github.com/user-attachments/assets/78242cb6-db2f-4446-8be9-4e2c177adac5" /><br>
+
+##### AXI (Advanced eXtensible Interface)
+- 용도: 고대역폭 메모리-맵드(DDR, 큰 버퍼, DMA)와 제어 레지스터(AXI4-Lite).
+- 채널 분리(5채널):
+    - 주소: AW(write addr), AR(read addr)
+    - 데이터/응답: W(write data), B(write resp), R(read data)   
+        각 채널이 VALID/READY 핸드셰이크로 독립 동작 → 고효율 파이프라인
+- 버스트/동시성: 버스트 전송, 여러 outstanding 트랜잭션, ID 기반 재정렬/인터리빙 가능
+- 변종:
+    - AXI4: 버스트 지원, 데이터폭/ID/캐시·QoS 신호 등 풍부
+    - AXI4-Lite: 단일 비트(버스트 없음) → CSR용, APB 대체로 자주 사용
+    - AXI4-Stream: 주소 없음, 순수 스트리밍(영상/FFT 등 데이터 스트림)
+- 특징: 높은 처리량, 낮은 지연(백프레셔 대응), 복잡도·자원 소모 큼.
+
+[AXI4-Lite 타이밍다이어그램]   
+<img width="620" height="696" alt="Image" src="https://github.com/user-attachments/assets/372e8cc1-4acc-4fff-8ed1-96011de81854" /><br>
+
+[인터페이스]   
+<img width="450" height="226" alt="Image" src="https://github.com/user-attachments/assets/ee35b190-875d-4590-800d-a44bf9138c3b" /><br>
+
+[시뮬레이션]    
+<img width="1115" height="462" alt="Image" src="https://github.com/user-attachments/assets/d67f5cc3-fa47-4cc2-bbab-4fabacfb3119" />
