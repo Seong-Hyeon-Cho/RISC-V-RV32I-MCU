@@ -237,5 +237,8 @@ MCU 실행 결과<br>
 [인터페이스]   
 <img width="450" height="226" alt="Image" src="https://github.com/user-attachments/assets/ee35b190-875d-4590-800d-a44bf9138c3b" /><br>
 
+[아키텍처]<br>
+<img width="1848" height="701" alt="Image" src="https://github.com/user-attachments/assets/08bdbb68-8f10-4ece-a557-de8a9ea70c92" /><br>
+
 [시뮬레이션]    
 <img width="1115" height="462" alt="Image" src="https://github.com/user-attachments/assets/d67f5cc3-fa47-4cc2-bbab-4fabacfb3119" />
